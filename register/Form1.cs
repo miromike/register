@@ -11,8 +11,8 @@ namespace register
         }
         FirebaseConfig fbc = new FirebaseConfig()
         {
-            AuthSecret = "XNKREdDh3zVpRKANbkHFxl6F8qSRF9Eup8cESali",
-            BasePath = "https://register-a194e-default-rtdb.firebaseio.com/"
+            AuthSecret = /* */,
+            BasePath = /* */
         };
         IFirebaseClient client;
 
@@ -24,21 +24,21 @@ namespace register
             }
             catch
             {
-                MessageBox.Show("¹®Á¦¹ß»ı");
+                MessageBox.Show("ë¬¸ì œë°œìƒ");
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var result = client.Get("°¡ÀÔÀÚ ¸í´Ü/" + textBox2.Text);
+            var result = client.Get("ê°€ì…ì ëª…ë‹¨/" + textBox2.Text);
             Upload upd = result.ResultAs<Upload>();
             Upload upd2 = new Upload()
             {
                 name = textBox1.Text, id = textBox2.Text, pwd = textBox3.Text  
             };
-            var send = client.Set("°¡ÀÔÀÚ ¸í´Ü/" + textBox2.Text, upd2);
+            var send = client.Set("ê°€ì…ì ëª…ë‹¨/" + textBox2.Text, upd2);
 
-            MessageBox.Show("È¸¿ø °¡ÀÔ ¿Ï·á");
+            MessageBox.Show("íšŒì› ê°€ì… ì™„ë£Œ");
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -49,24 +49,24 @@ namespace register
                 id = textBox2.Text,
                 pwd = textBox3.Text
             };
-            var send = client.Set("°¡ÀÔÀÚ ¸í´Ü/" + textBox2.Text, upd2);
+            var send = client.Set("ê°€ì…ì ëª…ë‹¨/" + textBox2.Text, upd2);
 
-            MessageBox.Show("¼öÁ¤ ¿Ï·á");
+            MessageBox.Show("ìˆ˜ì • ì™„ë£Œ");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             if (textBox2.Text == "")
             {
-                MessageBox.Show("Á¤º¸¸¦ ±âÀÔÇØ ÁÖ¼¼¿ä.");
+                MessageBox.Show("ì •ë³´ë¥¼ ê¸°ì…í•´ ì£¼ì„¸ìš”.");
             }
             else
             {
-                var result = client.Get("°¡ÀÔÀÚ ¸í´Ü/" + textBox2.Text);
+                var result = client.Get("ê°€ì…ì ëª…ë‹¨/" + textBox2.Text);
                 Upload upd = result.ResultAs<Upload>();
                 if (upd == null)
                 {
-                    MessageBox.Show("ÀÔ·ÂÇÑ Á¤º¸·Î Á¶È¸ °ªÀÌ ¾ø½À´Ï´Ù.");
+                    MessageBox.Show("ì…ë ¥í•œ ì •ë³´ë¡œ ì¡°íšŒ ê°’ì´ ì—†ìŠµë‹ˆë‹¤.");
                 }
                 else
                 {
@@ -74,7 +74,7 @@ namespace register
                     textBox2.Text = upd.id;
                     textBox3.Text = upd.pwd;
 
-                    MessageBox.Show("µ¥ÀÌÅ¸ ¹Ş¾Æ¿È");
+                    MessageBox.Show("ë°ì´íƒ€ ë°›ì•„ì˜´");
                 }
             }
         }
@@ -83,25 +83,25 @@ namespace register
         {
             if (textBox2.Text == "")
             {
-                MessageBox.Show("Á¤º¸¸¦ ±âÀÔÇØ ÁÖ¼¼¿ä.");
+                MessageBox.Show("ì •ë³´ë¥¼ ê¸°ì…í•´ ì£¼ì„¸ìš”.");
             }
             else
             {
-                var result = client.Get("°¡ÀÔÀÚ ¸í´Ü/" + textBox2.Text);
+                var result = client.Get("ê°€ì…ì ëª…ë‹¨/" + textBox2.Text);
                 Upload upd = result.ResultAs<Upload>();
                 if (upd == null)
                 {
-                    MessageBox.Show("ÀÔ·ÂÇÑ Á¤º¸·Î Á¶È¸ °ªÀÌ ¾ø½À´Ï´Ù.");
+                    MessageBox.Show("ì…ë ¥í•œ ì •ë³´ë¡œ ì¡°íšŒ ê°’ì´ ì—†ìŠµë‹ˆë‹¤.");
                 }
                 else
                 {
-                    result = client.Delete("°¡ÀÔÀÚ ¸í´Ü/" + textBox2.Text);
+                    result = client.Delete("ê°€ì…ì ëª…ë‹¨/" + textBox2.Text);
 
                     textBox1.Text = "";
                     textBox2.Text = "";
                     textBox3.Text = "";
 
-                    MessageBox.Show("Á¤º¸ »èÁ¦ ¿Ï·á");
+                    MessageBox.Show("ì •ë³´ ì‚­ì œ ì™„ë£Œ");
                 }
             }
         }
@@ -111,16 +111,16 @@ namespace register
             string id = textBox4.Text;
             string pwd = textBox5.Text;
 
-            var result = client.Get("°¡ÀÔÀÚ ¸í´Ü/" + id);
+            var result = client.Get("ê°€ì…ì ëª…ë‹¨/" + id);
             Upload upd = result.ResultAs<Upload>();
 
             if (id == null || upd == null || pwd == null || pwd != upd.pwd) 
             {
-                MessageBox.Show("½ÇÆĞ");
+                MessageBox.Show("ì‹¤íŒ¨");
             }
             else
             { 
-                MessageBox.Show("¼º°ø");
+                MessageBox.Show("ì„±ê³µ");
             }
         }
     }
